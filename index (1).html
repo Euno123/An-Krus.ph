@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Krus Student Publication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #002366; /* Royal Blue */
+            --secondary: #0F52BA; /* Slightly lighter royal blue */
+            --accent: #FFD700; /* Gold/Yellow */
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 35, 102, 0.9) 0%, rgba(15, 82, 186, 0.9) 100%);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-card {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .featured-article {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/489993116_122156268632546283_4516623580986940832_n.jpg?stp=dst-jpg_p526x395_tt6&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=J8hkpNtCEksQ7kNvwHBLpDD&_nc_oc=AdmB5Kwr3pZ2Fhou-6NEh-xElVu-mWsgrA6TzFmKKemEoHNwmySfm1Huw9Q0EUQzqYc&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=tDHyQMorTKZDG_8vIuLWXQ&oh=00_AfFGSUQNfL9G-ss_qWzzkyPjRPz7vrxKMuHFDEJrb9G9cg&oe=68186932');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Fix for footer border color */
+        .footer-border {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Fix for image aspect ratios */
+        .image-cover {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Logo styling */
+        .logo-img {
+            height: 50px;
+            width: auto;
+            max-width: 200px;
+        }
+        
+        /* Custom animation for logo */
+        .logo-container:hover .logo-img {
+            transform: rotate(5deg) scale(1.05);
+        }
+        
+        .logo-img {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Pulse animation for CTA buttons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 scroll-smooth">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Logo image with text -->
+                <div class="logo-container flex items-center space-x-3">
+                    <img src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t39.30808-1/472180892_122135154260546283_4088371341843372121_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=k6-WGvIGK2AQ7kNvwGS3ar5&_nc_oc=AdmFzkrG5Znjy1MU7MB7R-qTkyKy3HnbSFfhhDuXmnIzftUVP77M_GtK2nzbAqGAhVs&_nc_zt=24&_nc_ht=scontent.fmnl4-1.fna&_nc_gid=r5-cOXMDAac7hng2ksS5mQ&oh=00_AfEh2Bo-o0neGqrhrFZVysjyPE9-wCpvWQXa9L0rOtdT2A&oe=68188A50" 
+                         alt="An Krus Logo" 
+                         class="logo-img">
+                    <span class="heading-font text-2xl font-bold hidden sm:block" style="color: var(--primary);">An Krus</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link font-medium" style="color: var(--primary);">Home</a>
+                <a href="#news" class="nav-link text-gray-600 hover:text-blue-800 font-medium">News</a>
+                <a href="#features" class="nav-link text-gray-600 hover:text-blue-800 font-medium">Features</a>
+                <a href="#opinion" class="nav-link text-gray-600 hover:text-blue-800 font-medium">Opinion</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-blue-800 font-medium">About</a>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="focus:outline-none" style="color: var(--primary);">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#" class="block py-2 font-medium" style="color: var(--primary);">Home</a>
+            <a href="#news" class="block py-2 text-gray-600 hover:text-blue-800 font-medium">News</a>
+            <a href="#features" class="block py-2 text-gray-600 hover:text-blue-800 font-medium">Features</a>
+            <a href="#opinion" class="block py-2 text-gray-600 hover:text-blue-800 font-medium">Opinion</a>
+            <a href="#about" class="block py-2 text-gray-600 hover:text-blue-800 font-medium">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 animate-fadeIn">
+                <h1 class="heading-font text-4xl md:text-5xl font-bold mb-4">An Krus</h1>
+                <h2 class="text-2xl md:text-3xl font-medium mb-6">The Official Student Publication of Holy Cross College of Carigara Incorporated</h2>
+                <p class="text-lg mb-8">Bringing you the latest news, features, and opinions from our campus community. Write with a heart, serve with purpose.</p>
+                <div class="flex space-x-4">
+                    <a href="#latest" class="btn-primary text-white px-6 py-3 rounded-full font-medium pulse-animation">Latest Articles</a>
+                    <a href="#subscribe" class="border-2 border-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-blue-900 transition">Subscribe</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 animate-fadeIn" style="animation-delay: 0.2s;">
+                <div class="bg-white rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
+                    <img src="https://i.imgur.com/G9rT9le.png" 
+                         alt="Students on campus" 
+                         class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Latest Articles -->
+    <section id="latest" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-sm font-semibold tracking-wider uppercase px-4 py-1 rounded-full" 
+                      style="background-color: rgba(0, 35, 102, 0.1); color: var(--primary);">
+                    Latest Updates
+                </span>
+                <h2 class="heading-font text-3xl font-bold mt-4" style="color: var(--primary);">Campus News & Stories</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="article-card bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t39.30808-6/493145913_122158421366546283_7117865452023943369_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHLgLlXT9DMhKM8ZtTG6K5kvyPpcjgqr_a_I-lyOCqv9hCnqEMQXdncxkeRdQuQHfgKlmoG8-ac67dV3TLhgD5a&_nc_ohc=hK8zxChfWKAQ7kNvwGtEM8k&_nc_oc=AdngYQc9_hV4mkxKTCFsGBQMYDa-qdT7QjG6DMkXirQrGaERdI-O5DXU-sIWhdeijLY&_nc_zt=23&_nc_ht=scontent.fmnl4-2.fna&_nc_gid=Q__PKKv9i-czquOcPqRsIg&oh=00_AfFxmH9RzKUckD9gYq5w4sv3MmIZ9d_FLqizE7i5-e9kng&oe=6818AE8E" 
+                             alt="Article image" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-yellow-500 text-blue-800 text-xs font-bold px-2 py-1 rounded-full uppercase">
+                            New
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-medium" style="color: var(--secondary);">World News</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3">𝐁𝐑𝐄𝐀𝐊𝐈𝐍𝐆 𝐍𝐄𝐖𝐒: Pope Francis, the 266th Bishop of Rome, passed into eternal rest on Easter Monday, April 21, 2025, at the age of 88. His death occurred within the quiet sanctuary of Casa Santa Marta, his chosen dwelling inside the heart of the Vatican.</h3>
+                        <p class="text-gray-600 mb-4">Vatican Media reports that he is to be laid to rest at the Basilica of Santa Maria Maggiore in Rome—a sacred edifice of deep personal and spiritual significance to the late pontiff, reflecting his devotion to the Blessed Virgin Mary, whom he honored as the Mother of the Church. | 𝑳𝒂𝒚𝒐𝒖𝒕 𝒃𝒚 𝑮𝒊𝒓𝒍𝒆𝒆 𝑨𝒏𝒏𝒆 𝑪𝒆𝒓𝒆𝒛𝒐, 𝑺𝑳𝑨</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span>By Kent D. Reyes | Editor-in-Chief</span>
+                            <span class="mx-2">•</span>
+                            <span>April 21, 2025</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="article-card bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t39.30808-6/491970573_122157927890546283_4226715918222647598_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEcDvwjfvZWwy-27juuOBAHM7sUTFKmfIYzuxRMUqZ8hiVGL9BQAYh4cEH9V5mB87PkxlI1_C0ipyxk51_tWCSC&_nc_ohc=Si3M-0UoE8oQ7kNvwHWP_sP&_nc_oc=AdllSEz4nFgIgvXFKmyRvZJB9elCQ5h4kB84Vr_igaJ534DM9Hxrun-uf82EGJny2bs&_nc_zt=23&_nc_ht=scontent.fmnl4-6.fna&_nc_gid=uBIfmV2A6YYZaF22ny_2HQ&oh=00_AfHq4Ffe2gBG4i9EY_rsNCsQpSWFQaGUlGQCMhiazb76hQ&oe=68187D28" 
+                             alt="Article image" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-medium" style="color: var(--secondary);">Student Life</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3">𝐖𝐈𝐓𝐍𝐄𝐒𝐒: Academic excellence took center stage as Holy Cross College of Carigara, Incorporated (HCCCI) held its Recognition and Graduation Day last April 11 and 12.
+</h3>
+                        <p class="text-gray-600 mb-4">The ceremony celebrated the achievements of Junior High Completers, Senior High graduates, and College students from first to fourth year.
+Kent Deloria Reyes, a with high honor graduate and Class Valedictorian from Accountancy, Business and Management (ABM) strand expressed his words of welcome.
+While, Archie Bald Horca, with high honors and the Class Salutatorian from Science, Technology, Engineering, and Mathematics (STEM) strand offered the invocation.
+
+Ruela Mae Cospada, a Summa Cum Laude graduate in Bachelor of Science in Business Administration (BSBA), delivered her words of gratitude.
+
+Meanwhile, Aiyazen Legaspi, a  Cum Laude graduate in Bachelor of Physical Education (BPED), pledged allegiance to the alma mater.
+
+HCCCI College Dean Sister Maribel Pianco, OSF, in her closing remarks, she emphasized the intrinsic worth of every student, regardless of accolades, stating: “You are always valuable, whether you have medals or none.” 
+
+The ceremony concluded with the conferral of medals and certificates, formally acknowledging the students' academic diligence and distinction throughout the 2024-2025 academic year. 
+
+|
+𝑳𝒂𝒚𝒐𝒖𝒕 𝒃𝒚 𝑮𝒊𝒓𝒍𝒆𝒆 𝑨𝒏𝒏𝒆 𝑪𝒆𝒓𝒆𝒛𝒐, 𝑺𝑳𝑨
+| 𝑪𝒂𝒑𝒕𝒖𝒓𝒆𝒅 𝒃𝒚 𝑫𝒂𝒗𝒆 𝑩𝒂𝒄𝒐𝒏𝒂𝒘𝒂, 𝑹𝑩.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span>By Phelbas Caliel Sicadsicad and Mark Federico Fuentes | News Writers</span>
+                            <span class="mx-2">•</span>
+                            <span>May 10, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Article 3 -->
+                <div class="article-card bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/487828130_122105627732822417_7744197644329176170_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGU1p0YnBhQUx73mmcM-udbKLpR2GHauR4oulHYYdq5HpzsWJ8LsNlKoflm7mnhC74tY4BxCg95VtFKck5eP6Mc&_nc_ohc=wAiuANEzc0MQ7kNvwEoZzE6&_nc_oc=Adnl1CtNidRtE67WbjA_koBzHnErV4e_wtIP9CiQFZw9tb5kV9cRjIyoEnoya4wKdLo&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=1hUQ4RrXZHY7lTWLp5IThA&oh=00_AfE4Z1pmBliaH5n3HfECMyFh3B6aoaz2NPiM9KDTH0GFQA&oe=68189DF7" 
+                             alt="Article image" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
+                            Hot
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-sm font-medium" style="color: var(--secondary);">Sports</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3">💛 Holympics 2025: Passion in motion; Competing with courage, Winning with a H.E. A.R.T.💙</h3>
+                        <p class="text-gray-600 mb-4">Grade 11 students showed what it means to compete with heart — pushing limits, building bonds, and celebrating every victory together! 🏃‍♂️🏆 #Holympics2025 | Captured by: Paul Vincent Clemente & Rubelyn Camposano
+| Layout by: Vincent Sabay</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span>By Euno Nijel Maceda | Photojournaslist</span>
+                            <span class="mx-2">•</span>
+                            <span>May 5, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#news" class="inline-block border-2 px-6 py-3 rounded-full font-medium hover:bg-blue-50 transition" 
+                   style="border-color: var(--primary); color: var(--primary);">
+                    View All Articles <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section id="features" class="py-20 featured-article text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl bg-black/30 backdrop-blur-sm rounded-xl p-8">
+                <span class="text-sm font-medium bg-white px-3 py-1 rounded-full inline-block" style="color: var(--primary);">Featured Story</span>
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mt-4 mb-6">𝐖𝐈𝐓𝐍𝐄𝐒𝐒: Most Rev. Fr. John Du, D.D., Archbishop of Palo, presided over the Baccalaureate Mass held at Holy Cross College of Carigara, Incorporated (HCCCI) on Thursday, April 10.</h2>
+                <p class="text-lg mb-8">The mass offered thanksgiving and blessings to the high school With Honors, Completers, Graduating Senior High and College students.
+
+School administrators, parents, faculty and staff also attended the said event.
+
+#AnKrusWriteWithAHeart
+
+| 
+𝑳𝒂𝒚𝒐𝒖𝒕 𝒃𝒚 𝑮𝒊𝒓𝒍𝒆𝒆 𝑨𝒏𝒏𝒆 𝑪𝒆𝒓𝒆𝒛𝒐, 𝑺𝑳𝑨 |
+𝑪𝒂𝒑𝒕𝒖𝒓𝒆𝒅 𝒃𝒚: 𝑪𝒚𝒓𝒂 𝑴𝒆𝒏𝒅𝒐𝒛𝒂, 𝑴𝒂𝒓𝒈𝒂𝒖𝒙 𝑫𝒆𝒏𝒊𝒔𝒆 𝑷𝒊𝒂𝒏𝒈𝒄𝒐, 𝒂𝒏𝒅 𝑫𝒂𝒗𝒆 𝑩𝒂𝒄𝒐𝒏𝒂𝒘𝒂 -  𝑷𝒉𝒐𝒕𝒐𝒋𝒐𝒖𝒓𝒏𝒂𝒍𝒊𝒔𝒕𝒔 𝒂𝒏𝒅 𝑹𝒂𝒅𝒊𝒐 𝑩𝒓𝒐𝒂𝒅𝒄𝒂𝒔𝒕𝒆𝒓</p>
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                        <img src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/468205625_122127414536546283_7898907358573947891_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHlrNcVxh2PUQQ2cH2fYm1o0faFpeJCN-HR9oWl4kI34SZKLN16iGlBt-JdEGDTxCwfRM3T1ejlIkJfhMxtNPWT&_nc_ohc=GIZj6w19JsAQ7kNvwG0pvmK&_nc_oc=AdnoxvygJjswnwZdBSGGIGEEBUnff1CeV9zH9fSLO9WTlCz3xvaP3wkzvKAeJxQ0w4U&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=KOudYADdYw6qvZGKf2LwGQ&oh=00_AfEncxLb3Gk_Dn2M-aJybs88CeG-hgjsKV-uypmHxyUbcQ&oe=6818B305" 
+                             alt="Author" 
+                             class="image-cover">
+                    </div>
+                    <div>
+                        <p class="font-medium">Kent D. Reyes</p>
+                        <p class="text-sm text-gray-300">Editor-in-Chief</p>
+                    </div>
+                </div>
+                <a href="#" class="inline-block bg-white px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition" 
+                   style="color: var(--primary);">
+                    Read Full Story <i class="fas fa-book-open ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opinion Section -->
+    <section id="opinion" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl font-bold" style="color: var(--primary);">Voices of the Campus</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-2">Thought-provoking perspectives from students, faculty, and alumni</p>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Opinion 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2" style="border-color: var(--accent);">
+                            <img src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/468205625_122127414536546283_7898907358573947891_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHlrNcVxh2PUQQ2cH2fYm1o0faFpeJCN-HR9oWl4kI34SZKLN16iGlBt-JdEGDTxCwfRM3T1ejlIkJfhMxtNPWT&_nc_ohc=GIZj6w19JsAQ7kNvwG0pvmK&_nc_oc=AdnoxvygJjswnwZdBSGGIGEEBUnff1CeV9zH9fSLO9WTlCz3xvaP3wkzvKAeJxQ0w4U&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=L9uEABg5vyL2y2dd1_Q1eA&oh=00_AfF-1AO0dEX6vq1OCg9y9gzQrLuG6dzNkUUuTCrrsv-tcQ&oe=6818B305" 
+                                 alt="Author" 
+                                 class="image-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Kent D. Reyes</h4>
+                            <p class="text-sm text-gray-500">Editor-in-Chief</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Why We Need More Mental Health Resources on Campus</h3>
+                    <p class="text-gray-600 mb-4">The recent student survey reveals alarming statistics about mental health struggles among our student body. It's time for the administration to take action and prioritize student well-being alongside academic excellence...</p>
+                    <a href="#" class="text-sm font-medium flex items-center" style="color: var(--secondary);">
+                        Continue Reading <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Opinion 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2" style="border-color: var(--accent);">
+                            <img src="https://scontent.fmnl4-7.fna.fbcdn.net/v/t39.30808-6/468294716_122127413678546283_4125093797557083867_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFjjRp3GlUgIx4IW0RB6a6GQo9zq1qio_dCj3OrWqKj97jNiZlY6BpeKzL8VcpXUx2YPBz4Tr2VP09F-lNGk5Lz&_nc_ohc=PgAFFc2oQsQQ7kNvwHvl6gP&_nc_oc=AdmlTIP6oBlEcVPIS7R8ZKxhqMsUJdPMzNWQMtKNveza6CjINn3jjzZOdhzgUTeXNwo&_nc_zt=23&_nc_ht=scontent.fmnl4-7.fna&_nc_gid=FZAU0izU3lu_2xxEWbIQaA&oh=00_AfFBPG7nOF0jjWDJxjRyIDcQLjMl6XCNwOGnLdC_uVOL6Q&oe=68189AB7" 
+                                 alt="Author" 
+                                 class="image-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Arjoreco Avila</h4>
+                            <p class="text-sm text-gray-500">Technical Adviser</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">The Hidden Costs of Student Success</h3>
+                    <p class="text-gray-600 mb-4">While we celebrate academic achievements, we rarely talk about the financial and emotional toll that the pressure to succeed takes on students. From sleepless nights to financial burdens, the path to success isn't as glamorous as it seems...</p>
+                    <a href="#" class="text-sm font-medium flex items-center" style="color: var(--secondary);">
+                        Continue Reading <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="heading-font text-3xl font-bold mb-6" style="color: var(--primary);">About An Krus</h2>
+                    <p class="text-gray-600 mb-4">An Krus is the official student publication of Holy Cross College of Carigara Incorporated, established in 1975. We are committed to delivering accurate, timely, and relevant news to the campus community.</p>
+                    <p class="text-gray-600 mb-6">Our team of student journalists, photographers, and editors work tirelessly to cover campus events, student life, sports, and important issues affecting our community. We strive to uphold the highest standards of journalism while fostering creativity and critical thinking.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-400 hover:bg-blue-500 text-white flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-pink-600 hover:bg-pink-700 text-white flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mr-4" style="background-color: rgba(0, 35, 102, 0.1);">
+                                <i class="fas fa-users text-2xl" style="color: var(--primary);"></i>
+                            </div>
+                            <h3 class="text-xl font-bold" style="color: var(--secondary);">Join Our Team</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Interested in journalism, photography, or design? We're always looking for passionate students to join our team. No prior experience necessary—just bring your enthusiasm and willingness to learn!</p>
+                        <a href="#" class="inline-flex items-center border-2 px-6 py-3 rounded-full font-medium hover:bg-blue-50 transition" 
+                           style="border-color: var(--primary); color: var(--primary);">
+                            Apply Now <i class="fas fa-edit ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t39.30808-1/472180892_122135154260546283_4088371341843372121_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=k6-WGvIGK2AQ7kNvwGS3ar5&_nc_oc=AdmFzkrG5Znjy1MU7MB7R-qTkyKy3HnbSFfhhDuXmnIzftUVP77M_GtK2nzbAqGAhVs&_nc_zt=24&_nc_ht=scontent.fmnl4-1.fna&_nc_gid=r5-cOXMDAac7hng2ksS5mQ&oh=00_AfEh2Bo-o0neGqrhrFZVysjyPE9-wCpvWQXa9L0rOtdT2A&oe=68188A50" 
+                             alt="An Krus Logo" 
+                             class="logo-img">
+                        <span class="heading-font text-xl font-bold">An Krus</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">The official student publication of Holy Cross College of Carigara Incorporated since 1975.</p>
+                    <p class="text-sm text-gray-500">Write with a heart, serve with purpose.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Sections</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#news" class="text-gray-400 hover:text-white transition">News</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+                        <li><a href="#opinion" class="text-gray-400 hover:text-white transition">Opinion</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Arts & Culture</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sports</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">About</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">Our Team</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">History</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Awards</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Join Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Advertise</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3" style="color: var(--accent);"></i>
+                            <span>Holy Cross College of Carigara Inc.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3" style="color: var(--accent);"></i>
+                            <span>ankrus@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3" style="color: var(--accent);"></i>
+                            <span>0930 673 7131</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t footer-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2024 An Krus Student Publication. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fadeIn');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Add hover effect to article cards
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Add click animation to buttons
+        document.querySelectorAll('button, a[href="#"]').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
